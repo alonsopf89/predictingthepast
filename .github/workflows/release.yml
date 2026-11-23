@@ -70,6 +70,7 @@ jobs:
         set -euo pipefail
         python3 -m pip install --upgrade twine
         TWINE_PASSWORD="$(gcloud auth print-access-token)"
+        echo "::add-mask::${TWINE_PASSWORD}"
         python3 -m twine upload \
           --repository-url "https://us-python.pkg.dev/oss-exit-gate-prod/predictingthepast--pypi/" \
           -u oauth2accesstoken \
